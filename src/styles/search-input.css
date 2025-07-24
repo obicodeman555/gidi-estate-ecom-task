@@ -1,0 +1,25 @@
+.searchInput__block {
+  flex: 400px;
+  max-width: 400px;
+}
+
+.searchInput__block > input {
+  padding: 0.5rem 2.25rem;
+  border: solid 1px #dbdbdb;
+  border-radius: 8px;
+}
+
+.searchInput__block > input::placeholder {
+  color: #000;
+  font-size: 14px;
+}
+
+.searchInput__icon {
+  top: 10px;
+  left: 10px;
+}
+.searchInput__icon > svg {
+  width: 22px;
+  height: 22px;
+  color: #b3b3b3;
+}

@@ -1,0 +1,10 @@
+.userAccount > span:first-of-type {
+  background-color: #f0f0f0;
+}
+
+.userAccount > span:first-of-type > svg {
+  width: 26px;
+  height: 26px;
+
+  color: #666666;
+}
