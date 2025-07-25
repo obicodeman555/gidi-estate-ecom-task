@@ -33,10 +33,10 @@
     "category": "Phones",
     "brand": "Infinix",
     "productThumbnails": [
+      "/images/infinix-hot-50.webp",
       "/images/google-pixel9-5g.webp",
       "/images/pixel9-thumbnail-1.webp",
       "/images/pixel9-thumbnail-2.webp",
-      "/images/infinix-hot-50.webp",
       "/images/beats-studio-buds.webp"
     ]
   },
@@ -54,11 +54,11 @@
     "category": "Airpod",
     "brand": "Apple",
     "productThumbnails": [
+      "/images/beats-studio-buds.webp",
       "/images/google-pixel9-5g.webp",
       "/images/pixel9-thumbnail-1.webp",
       "/images/pixel9-thumbnail-2.webp",
-      "/images/infinix-hot-50.webp",
-      "/images/beats-studio-buds.webp"
+      "/images/infinix-hot-50.webp"
     ]
   },
   {
@@ -74,7 +74,7 @@
     "category": "Earbuds",
     "brand": "Apple",
     "productThumbnails": [
-      "/images/google-pixel9-5g.webp",
+      "/images/beats-fit-pro.webp",
       "/images/pixel9-thumbnail-1.webp",
       "/images/pixel9-thumbnail-2.webp",
       "/images/infinix-hot-50.webp",
@@ -95,7 +95,7 @@
     "category": "Earbuds",
     "brand": "Huawei",
     "productThumbnails": [
-      "/images/google-pixel9-5g.webp",
+      "/images/huawei-freebuds-5i.webp",
       "/images/pixel9-thumbnail-1.webp",
       "/images/pixel9-thumbnail-2.webp",
       "/images/infinix-hot-50.webp",
@@ -117,7 +117,7 @@
     "brand": "Other",
     "longDescription": "13 hours + backup on 200 watts load\nHigh performance \n24 months warranty \n3-5 years + lifespan\nEco friendly \nLow maintenance\n12v-220AH",
     "productThumbnails": [
-      "/images/google-pixel9-5g.webp",
+      "/images/energos-12v-220ah-solar-tubular-battery.webp",
       "/images/pixel9-thumbnail-1.webp",
       "/images/pixel9-thumbnail-2.webp",
       "/images/infinix-hot-50.webp",
