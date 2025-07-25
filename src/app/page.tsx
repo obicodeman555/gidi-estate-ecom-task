@@ -13,7 +13,7 @@ export default function Home() {
       <header className="bg-white py-2">
         <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
-            <h1 className="text-3xl font-black">GIDI</h1>
+            <h1 className="text-2xl font-black">GIDI</h1>
             <div className="flex flex-col relative searchInput__block">
               <input
                 type="text"
@@ -40,11 +40,11 @@ export default function Home() {
       </header>
       <article>
         <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div>
-            <section>
+          <div className="grid grid-cols-3 gap-4 py-10">
+            <section className="productFilter__section col-span-1">
               <ProductFilters />
             </section>
-            <section>
+            <section className="productListing__section col-span-2">
               <ProductGrid />
             </section>
           </div>
