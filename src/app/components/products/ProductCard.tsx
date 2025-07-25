@@ -4,7 +4,13 @@ import { calcDiscountedPrice, formatAmount, truncate } from "@/utils/helpers";
 import Image from "next/image";
 import Link from "next/link";
 
-const ProductCard = ({ product }: { product: IProduct }) => {
+const ProductCard = ({
+  product,
+  onProductDelete,
+}: {
+  product: IProduct;
+  onProductDelete: (id: string) => void;
+}) => {
   return (
     <div className="productCard flex flex-col relative">
       <Link
@@ -37,7 +43,10 @@ const ProductCard = ({ product }: { product: IProduct }) => {
         </div>
       </Link>
       <div className="flex flex-col gap-2 productCard__ctas absolute top-4 right-3">
-        <button type="button">
+        <button
+          type="button"
+          onClick={() => onProductDelete(product.productId)}
+        >
           <DeleteIconFill />
           <span className="text-xs font-bold flex items-center justify-center">
             Delete to remove

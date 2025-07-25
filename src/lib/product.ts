@@ -54,3 +54,16 @@ export const getProductById = (id: string): IProduct => {
   }
   return product;
 };
+
+export const deleteProduct = (id: string): void => {
+  if (typeof window === "undefined") return;
+
+  const raw = localStorage.getItem(PRODUCTS_KEY);
+  if (!raw) return;
+
+  const products: IProduct[] = JSON.parse(raw);
+
+  const updated = products.filter((item) => item.productId !== id);
+
+  localStorage.setItem(PRODUCTS_KEY, JSON.stringify(updated));
+};
