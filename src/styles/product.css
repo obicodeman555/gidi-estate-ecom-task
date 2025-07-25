@@ -352,3 +352,9 @@
 .productDetails__siteMap > a {
   color: #2a8703;
 }
+
+/*Product Form styles*/
+
+.productForm__ctaButton:disabled {
+  cursor: not-allowed;
+}

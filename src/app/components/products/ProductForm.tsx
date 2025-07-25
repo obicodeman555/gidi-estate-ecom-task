@@ -1,7 +1,7 @@
 "use client";
 import { type IProduct } from "@/types/product";
 import { generateId } from "@/utils/helpers";
-import { type FormEvent, useState } from "react";
+import { type FormEvent, useMemo, useState } from "react";
 
 interface ProductFormProps {
   initialProduct?: IProduct;
@@ -24,6 +24,18 @@ export const ProductForm = ({
       inStock: false,
     }
   );
+
+  const isFormValid = (form: Partial<IProduct>): boolean => {
+    return (
+      !!form.name?.trim() &&
+      !!form.price &&
+      !!form.imageUrl?.trim() &&
+      !!form.shortDescription?.trim() &&
+      !!form.longDescription?.trim()
+    );
+  };
+
+  const formIsValid = useMemo(() => isFormValid(formData), [formData]);
 
   const handleNumericInput = (e: FormEvent<HTMLInputElement>) => {
     const numericValue = e.currentTarget.value.replace(/\D/g, ""); // Allow only numbers;
@@ -121,7 +133,15 @@ export const ProductForm = ({
           </label>
         </div>
         <div className="flex flex-col mt-6">
-          <button className="bg-neutral-700 text-white px-4 py-4 rounded">
+          <button
+            type="submit"
+            className={`text-lg font-bold productForm__ctaButton  px-4 py-4 rounded ${
+              formIsValid
+                ? "bg-blue-600 text-white hover:bg-blue-700"
+                : "bg-neutral-400 text-white"
+            }`}
+            disabled={!formIsValid}
+          >
             {isEdit ? "Update Product" : "Add Product"}
           </button>
         </div>
