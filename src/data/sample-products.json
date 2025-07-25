@@ -11,7 +11,14 @@
     "category": "Phones",
     "brand": "Google",
     "shortDescription": "5G, Super Actua display (LTPO), 16GB RAM 256GB ROM, 5060mAh | Google Pixel 9 Pro XL 6.8\" | Google | Xn9VKX57qtnaQ9WKafzf",
-    "longDescription": "Display\t6.8-inch OLED (1344 x 2992)\nRefresh rate\t1 - 120Hz\n\nRear cameras\t50MP wide (f/1.68), 48MP ultrawide (f/1.7), 48MP 5x telephoto (f/2.8)\nFront camera\t42MP selfie (f/2.2)\n\nChipset:\tGoogle Tensor G4\nTitan M2 security coprocessor\n\nRAM\t16GB\nStorage\t256GB\n\nBattery\t5,060 mAh (minimum 4,942 mAh)\n\nSoftware\tAndroid 14\n\nSize\t6 x 2.8 x 0.3 inches (152.8 x 72 x 8.5 mm)"
+    "longDescription": "Display\t6.8-inch OLED (1344 x 2992)\nRefresh rate\t1 - 120Hz\n\nRear cameras\t50MP wide (f/1.68), 48MP ultrawide (f/1.7), 48MP 5x telephoto (f/2.8)\nFront camera\t42MP selfie (f/2.2)\n\nChipset:\tGoogle Tensor G4\nTitan M2 security coprocessor\n\nRAM\t16GB\nStorage\t256GB\n\nBattery\t5,060 mAh (minimum 4,942 mAh)\n\nSoftware\tAndroid 14\n\nSize\t6 x 2.8 x 0.3 inches (152.8 x 72 x 8.5 mm)",
+    "productThumbnails": [
+      "/images/google-pixel9-5g.webp",
+      "/images/pixel9-thumbnail-1.webp",
+      "/images/pixel9-thumbnail-2.webp",
+      "/images/infinix-hot-50.webp",
+      "/images/beats-studio-buds.webp"
+    ]
   },
   {
     "productId": "69e1cd901e079530ckecd507",
@@ -24,7 +31,14 @@
     "id": "6P7YzW2svZobx7mPfYmr",
     "imageUrl": "/images/infinix-hot-50.webp",
     "category": "Phones",
-    "brand": "Infinix"
+    "brand": "Infinix",
+    "productThumbnails": [
+      "/images/google-pixel9-5g.webp",
+      "/images/pixel9-thumbnail-1.webp",
+      "/images/pixel9-thumbnail-2.webp",
+      "/images/infinix-hot-50.webp",
+      "/images/beats-studio-buds.webp"
+    ]
   },
   {
     "productId": "67e1adb41e079530cbbcd579",
@@ -38,7 +52,14 @@
     "id": "HiP0adAeX3liJBiydYNR",
     "imageUrl": "/images/beats-studio-buds.webp",
     "category": "Airpod",
-    "brand": "Apple"
+    "brand": "Apple",
+    "productThumbnails": [
+      "/images/google-pixel9-5g.webp",
+      "/images/pixel9-thumbnail-1.webp",
+      "/images/pixel9-thumbnail-2.webp",
+      "/images/infinix-hot-50.webp",
+      "/images/beats-studio-buds.webp"
+    ]
   },
   {
     "productId": "67e1b1f01e079530cbbce0cf",
@@ -52,11 +73,18 @@
     "imageUrl": "/images/beats-fit-pro.webp",
     "category": "Earbuds",
     "brand": "Apple",
+    "productThumbnails": [
+      "/images/google-pixel9-5g.webp",
+      "/images/pixel9-thumbnail-1.webp",
+      "/images/pixel9-thumbnail-2.webp",
+      "/images/infinix-hot-50.webp",
+      "/images/beats-studio-buds.webp"
+    ],
     "longDescription": "Dynamic Active Noise Cancellation\nIntegrated Apple H1 Chip\nFlexible Secure-Fit Wingtips\nIPX4 Sweat & Water Resistance\nUp to 6 Hours of Playback with ANC\nCharging Case with 18 Extra Hours\nTransparency Mode Lets Outside Noise In\nAccelerometer Can Detect When You Speak\nDual Beamforming Mics for Clear Calls\nClass 1 Bluetooth for Longer Range "
   },
   {
     "productId": "67e1ae331e079530cbbcd691",
-    "inStock": true,
+    "inStock": false,
     "name": "HUAWEI FreeBuds 5i",
     "offPrice": 10,
     "price": 19684.2116,
@@ -66,11 +94,18 @@
     "imageUrl": "/images/huawei-freebuds-5i.webp",
     "category": "Earbuds",
     "brand": "Huawei",
+    "productThumbnails": [
+      "/images/google-pixel9-5g.webp",
+      "/images/pixel9-thumbnail-1.webp",
+      "/images/pixel9-thumbnail-2.webp",
+      "/images/infinix-hot-50.webp",
+      "/images/beats-studio-buds.webp"
+    ],
     "longDescription": "High Resolution Sound\n42 dB Multi-mode ANC\n28h of Music Playback\nCompact and Comfortable\nAll-Purpose Interconnections\n\nBattery capacity\nPer earbud: 55 mAh (min)\nCharging case: 410 mAh (min)\n\nPlaytime\nMusic playback on 1 charge: 6.0 hours (with ANC enabled)\nMusic playback on 1 charge: 7.5 hours (with ANC disabled)\nMusic playback with charging case: 18.5 hours (with ANC enabled)\nMusic playback with charging case: 28 hours (with ANC disabled)\n\nCharging Time\nAbout 60 minutes for the earbuds (in the charging case)\nAbout 110 for charging case without earbuds (wired)\n\nConnectivity\nBluetooth Compatibility:\nBT 5.2\n\nPop-Up Pair:\nSupported\n\nSensor\nHall sensor/Cap sensor\n\nDriver\n10 mm dynamic driver\n\nAudio Technology\nActive noise cancellation, Call noise cancellation, Transparency mode\n\nDISCLAIMER: The image is a visual representation of what the item looks like. Colours are subject to variations depending on availability at the midpoint of duration. Kindly send a notification (via call or mail) before the midpoint of duration for colour preference (subject to availability) "
   },
   {
     "productId": "67e1add41e079530cbbcd5d4",
-    "inStock": true,
+    "inStock": false,
     "name": "Energos 12v-220AH Solar Tubular Battery",
     "offPrice": 8,
     "price": 76500,
@@ -80,6 +115,13 @@
     "imageUrl": "/images/energos-12v-220ah-solar-tubular-battery.webp",
     "category": "Batterries",
     "brand": "Other",
-    "longDescription": "13 hours + backup on 200 watts load\nHigh performance \n24 months warranty \n3-5 years + lifespan\nEco friendly \nLow maintenance\n12v-220AH"
+    "longDescription": "13 hours + backup on 200 watts load\nHigh performance \n24 months warranty \n3-5 years + lifespan\nEco friendly \nLow maintenance\n12v-220AH",
+    "productThumbnails": [
+      "/images/google-pixel9-5g.webp",
+      "/images/pixel9-thumbnail-1.webp",
+      "/images/pixel9-thumbnail-2.webp",
+      "/images/infinix-hot-50.webp",
+      "/images/beats-studio-buds.webp"
+    ]
   }
 ]

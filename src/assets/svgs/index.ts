@@ -4,3 +4,7 @@ export * from "./BellIcon";
 export * from "./SignIcon";
 export * from "./DeleteIcon";
 export * from "./PenIcon";
+export * from "./ArrowIcon";
+export * from "./AutoIcon";
+export * from "./CalendarIcon";
+export * from "./StoreIcon";

@@ -11,4 +11,5 @@ export interface IProduct {
   category: string;
   brand: string;
   longDescription?: string;
+  productThumbnails?: string[];
 }

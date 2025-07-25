@@ -8,8 +8,8 @@ const ProductCard = ({ product }: { product: IProduct }) => {
   return (
     <div className="productCard flex flex-col relative">
       <Link
-        href={"/products"}
-        className="flex flex-col h-100 productCard__link"
+        href={`/products/${product.productId}`}
+        className="flex flex-col h-100 productCard__link bg-white border border-solid rounded-[20px]"
       >
         <div className="productCard__image">
           <Image
