@@ -45,10 +45,7 @@ export const getProducts = (): IProduct[] => {
 
 export const getProductById = (id: string): IProduct => {
   const products = getProducts();
-  console.log({ products });
   const product = products.find((product) => product.productId === id);
-
-  console.log({ product });
   if (!product) {
     throw new Error(`Product with ID ${id} not found`);
   }

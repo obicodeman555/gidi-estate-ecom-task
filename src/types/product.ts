@@ -13,3 +13,11 @@ export interface IProduct {
   longDescription?: string;
   productThumbnails?: string[];
 }
+
+export interface IProductContextType {
+  products: IProduct[];
+  add?: (product: IProduct) => void;
+  update?: (product: IProduct) => void;
+  remove?: (id: string) => void;
+  loading?: boolean;
+}

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Questrial } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components";
+import { ProductProvider } from "@/context/ProductContext";
 
 const inter = Questrial({
   subsets: ["latin"],
@@ -22,7 +23,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.className} antialiased`}>
         <Header />
-        {children}
+        <ProductProvider>{children}</ProductProvider>
       </body>
     </html>
   );

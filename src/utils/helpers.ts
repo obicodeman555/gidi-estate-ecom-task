@@ -30,3 +30,8 @@ export const calcDiscountedPrice = (
 export const truncate = (str: string, maxLength = 50): string => {
   return str.length > maxLength ? str.slice(0, maxLength) + "..." : str;
 };
+
+export const generateId = (): string =>
+  `${
+    crypto?.randomUUID?.() ?? Math.random().toString(36).slice(2) + Date.now()
+  }`;
