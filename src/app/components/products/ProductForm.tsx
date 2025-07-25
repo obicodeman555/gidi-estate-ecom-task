@@ -1,7 +1,7 @@
 "use client";
 import { type IProduct } from "@/types/product";
 import { generateId } from "@/utils/helpers";
-import { useState } from "react";
+import { type FormEvent, useState } from "react";
 
 interface ProductFormProps {
   initialProduct?: IProduct;
@@ -16,82 +16,93 @@ export const ProductForm = ({
     initialProduct || {
       id: generateId(),
       name: "",
-      price: 0,
+      price: "",
       longDescription: "",
       shortDescription: "",
       imageUrl: "",
-      offPrice: 0,
+      offPrice: "",
       inStock: false,
     }
   );
+
+  const handleNumericInput = (e: FormEvent<HTMLInputElement>) => {
+    const numericValue = e.currentTarget.value.replace(/\D/g, ""); // Allow only numbers;
+    setFormData({
+      ...formData,
+      [e.currentTarget.name]:
+        numericValue === "" ? "" : parseFloat(numericValue),
+    });
+  };
+
   return (
     <div className="bg-white border border-solid rounded-[20px] border-[#dbdbdb]">
-      <form className="flex flex-col gap-4 p-16">
-        <div>
+      <form className="flex flex-col gap-4 pt-14 pb-8 px-14">
+        <div className="flex flex-col">
           <input
+            name="productName"
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-            className="border p-2 w-full"
+            className="border  p-3 border-solid rounded-[8px] bg-[#F4F2FF] border-transparent sm:text-sm"
             placeholder="Product Name"
           />
         </div>
-        <div>
+        <div className="flex flex-col">
           <input
-            type="number"
-            value={formData.price}
-            onChange={(e) =>
-              setFormData({ ...formData, price: parseFloat(e.target.value) })
+            type="text"
+            name="price"
+            value={
+              isNaN(Number(formData.price)) ? "" : formData.price?.toString()
             }
-            className="border p-2 w-full"
+            onChange={handleNumericInput}
+            className="border p-3 border-solid rounded-[8px] bg-[#F4F2FF] border-transparent sm:text-sm"
             placeholder="Enter Price"
           />
         </div>
-        <div>
-          <label
-            htmlFor="offPrice"
-            className="block text-sm font-medium text-gray-700 mb-1"
-          >
-            Off Price
-          </label>
+        <div className="flex flex-col">
           <input
-            type="number"
+            type="text"
             name="offPrice"
             id="offPrice"
-            value={formData.offPrice}
-            onChange={(e) =>
-              setFormData({ ...formData, offPrice: parseFloat(e.target.value) })
+            value={
+              isNaN(Number(formData.offPrice))
+                ? ""
+                : formData.offPrice?.toString()
             }
-            className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+            onChange={handleNumericInput}
+            className="w-full   border  p-3 border-solid rounded-[8px] bg-[#F4F2FF] border-transparent sm:text-sm"
             placeholder="Optional discounted price"
           />
         </div>
-        <div>
+        <div className="flex flex-col">
           <input
+            name="imageUrl"
             value={formData.imageUrl}
             onChange={(e) =>
               setFormData({ ...formData, imageUrl: e.target.value })
             }
-            className="border p-2 w-full"
+            className="border p-3 border-solid rounded-[8px] bg-[#F4F2FF] border-transparent sm:text-sm"
             placeholder="Image URL"
           />
         </div>
-        <div>
+        <div className="flex flex-col">
           <textarea
+            name="shortDescription"
             value={formData.longDescription}
             onChange={(e) =>
               setFormData({ ...formData, longDescription: e.target.value })
             }
-            className="border p-2 w-full"
+            className="border p-3 border-solid rounded-[8px] bg-[#F4F2FF] border-transparent sm:text-sm"
             placeholder="Long Description"
           />
         </div>
-        <div>
+        <div className="flex flex-col">
           <textarea
+            name="longDescription"
             value={formData.shortDescription}
             onChange={(e) =>
               setFormData({ ...formData, shortDescription: e.target.value })
             }
-            className="border p-2 w-full"
+            className="border p-3 border-solid rounded-[8px] bg-[#F4F2FF] border-transparent sm:text-sm"
             placeholder="Short Description"
           />
         </div>
@@ -106,11 +117,11 @@ export const ProductForm = ({
               }
               className="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
             />
-            <span className="text-sm text-gray-700">In Stock</span>
+            <span className="text-sm text-blue-600">In Stock</span>
           </label>
         </div>
-        <div>
-          <button className="bg-blue-600 text-white px-4 py-2 rounded">
+        <div className="flex flex-col mt-6">
+          <button className="bg-neutral-700 text-white px-4 py-4 rounded">
             {isEdit ? "Update Product" : "Add Product"}
           </button>
         </div>

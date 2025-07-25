@@ -2,8 +2,8 @@ export interface IProduct {
   productId: string;
   inStock: boolean;
   name: string;
-  offPrice: number;
-  price: number;
+  offPrice: number | string;
+  price: number | string;
   shortDescription: string;
   slug: string;
   id: string;
