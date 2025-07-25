@@ -22,12 +22,15 @@ export const Header = () => {
             </span>
           </div>
           <div className="flex items-center gap-8">
-            <div className="flex items-center gap-2 userAccount">
+            <Link
+              href={"/products/add"}
+              className="flex items-center gap-2 userAccount"
+            >
               <span className="size-9 rounded-full flex items-center justify-center">
                 <AddIcon />
               </span>
               <span className="text-xs font-semibold">Add Product</span>
-            </div>
+            </Link>
             <BellIcon />
           </div>
         </div>
