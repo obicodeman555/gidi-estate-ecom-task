@@ -68,8 +68,8 @@
 ### Installation
 
 ```bash
-git clone https://github.com/your-username/ecommerce-product-listing.git
-cd ecommerce-product-listing
+git clone https://github.com/obicodeman555/gidi-estate-ecom-task.git
+cd gidi-estate-ecom-task
 npm install
 npm run dev
 
