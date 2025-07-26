@@ -51,8 +51,7 @@ const ProductDetails = () => {
                 <span>{product?.category}</span>
                 <span className="text-2xl font-black">{product?.name}</span>
                 <div>
-                  <span>Brand:</span>
-                  <span>{product?.brand}</span>
+                  <span>{product?.shortDescription}</span>
                 </div>
               </div>
             </div>

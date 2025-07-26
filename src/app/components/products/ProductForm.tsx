@@ -1,20 +1,42 @@
 "use client";
+
+import { CustomDropdown } from "@/components";
+import { useProduct } from "@/context/ProductContext";
+import { transformedUniqueCategories } from "@/lib/product";
 import { type IProduct } from "@/types/product";
 import { generateId } from "@/utils/helpers";
-import { type FormEvent, useMemo, useState } from "react";
+import {
+  type ChangeEvent,
+  type FormEvent,
+  useCallback,
+  useMemo,
+  useState,
+} from "react";
 
 interface ProductFormProps {
   initialProduct?: IProduct;
   isEdit?: boolean;
 }
 
+export type ProductFormValues = Pick<
+  IProduct,
+  | "name"
+  | "price"
+  | "offPrice"
+  | "productId"
+  | "shortDescription"
+  | "longDescription"
+  | "imageUrl"
+  | "inStock"
+>;
+
 export const ProductForm = ({
   initialProduct,
   isEdit = false,
 }: ProductFormProps) => {
-  const [formData, setFormData] = useState<Partial<IProduct>>(
+  const [formData, setFormData] = useState<ProductFormValues>(
     initialProduct || {
-      id: generateId(),
+      productId: generateId(),
       name: "",
       price: "",
       longDescription: "",
@@ -24,6 +46,16 @@ export const ProductForm = ({
       inStock: false,
     }
   );
+
+  const [selectedFileName, setSelectedFileName] = useState<string>("");
+  const [selectedCategory, setSelectedCategory] = useState<{
+    id: string;
+    name: string;
+  } | null>(null);
+
+  const { onAddNewProduct } = useProduct();
+
+  const customDropdownCatlist = transformedUniqueCategories();
 
   const isFormValid = (form: Partial<IProduct>): boolean => {
     return (
@@ -37,18 +69,89 @@ export const ProductForm = ({
 
   const formIsValid = useMemo(() => isFormValid(formData), [formData]);
 
-  const handleNumericInput = (e: FormEvent<HTMLInputElement>) => {
-    const numericValue = e.currentTarget.value.replace(/\D/g, ""); // Allow only numbers;
-    setFormData({
-      ...formData,
-      [e.currentTarget.name]:
-        numericValue === "" ? "" : parseFloat(numericValue),
-    });
+  const handleFileChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+
+    if (file) {
+      const objectUrl = URL.createObjectURL(file);
+      setSelectedFileName(file.name);
+      setFormData((prev) => ({ ...prev, imageUrl: objectUrl }));
+    }
+  }, []);
+
+  const handleCategorySelect = useCallback(
+    (category: { id: string; name: string }) => {
+      setSelectedCategory((prev) => ({
+        ...prev,
+        id: category.id,
+        name: category.name,
+      }));
+    },
+    []
+  );
+
+  const handleNumericInput = useCallback(
+    (e: React.FormEvent<HTMLInputElement>) => {
+      const { name, value } = e.currentTarget;
+
+      // 1. Remove all characters except digits and first decimal point
+      let numericString = value
+        .replace(/[^\d.]/g, "") // Remove all non-digit/non-dot characters
+        .replace(/(\..*)\./g, "$1"); // Allow only first decimal point
+
+      // 2. Split into whole and decimal parts
+      const parts = numericString.split(".");
+
+      // 3. Format the whole number part (remove leading zeros)
+      if (parts[0].length > 1) {
+        parts[0] = parts[0].replace(/^0+/, "");
+        if (parts[0] === "") parts[0] = "0";
+      }
+
+      // 4. Limit decimal places to 2 if needed
+      if (parts.length > 1) {
+        parts[1] = parts[1].slice(0, 2); // Limit to 2 decimal places
+      }
+
+      // 5. Rejoin the parts
+      numericString = parts.join(".");
+
+      setFormData({
+        ...formData,
+        [name]: numericString,
+      });
+    },
+    [formData]
+  );
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const payload = {
+      productId: initialProduct?.productId || generateId(),
+      id: initialProduct?.id || generateId(),
+      name: formData?.name,
+      price: formData?.price,
+      offPrice: formData?.offPrice,
+      longDescription: formData?.longDescription,
+      shortDescription: formData?.shortDescription,
+      imageUrl: formData?.imageUrl,
+      inStock: formData?.inStock,
+      category: selectedCategory?.name ?? "",
+      slug: (initialProduct?.name ?? formData?.name)
+        .toLowerCase()
+        .replace(/\s+/g, "-"),
+    };
+
+    if (initialProduct) return;
+    else onAddNewProduct?.(payload);
   };
 
   return (
     <div className="bg-white border border-solid rounded-[20px] border-[#dbdbdb]">
-      <form className="flex flex-col gap-4 pt-14 pb-8 px-14">
+      <form
+        className="flex flex-col gap-4 pt-14 pb-8 px-14"
+        onSubmit={handleSubmit}
+      >
         <div className="flex flex-col">
           <input
             name="productName"
@@ -56,6 +159,14 @@ export const ProductForm = ({
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
             className="border  p-3 border-solid rounded-[8px] bg-[#F4F2FF] border-transparent sm:text-sm"
             placeholder="Product Name"
+          />
+        </div>
+        <div>
+          <CustomDropdown
+            options={customDropdownCatlist}
+            selected={selectedCategory}
+            onSelect={handleCategorySelect}
+            placeholder="Select a category"
           />
         </div>
         <div className="flex flex-col">
@@ -85,16 +196,23 @@ export const ProductForm = ({
             placeholder="Optional discounted price"
           />
         </div>
-        <div className="flex flex-col">
+        <div className="flex items-center gap-2">
           <input
-            name="imageUrl"
-            value={formData.imageUrl}
-            onChange={(e) =>
-              setFormData({ ...formData, imageUrl: e.target.value })
-            }
-            className="border p-3 border-solid rounded-[8px] bg-[#F4F2FF] border-transparent sm:text-sm"
-            placeholder="Image URL"
+            type="file"
+            accept="image/*"
+            id="imageUpload"
+            className="hidden"
+            onChange={handleFileChange}
           />
+          <p className="flex-1 border p-3 border-solid rounded-[8px] bg-[#F4F2FF] border-transparent sm:text-sm text-[#86858c]">
+            {selectedFileName || "No selected image"}
+          </p>
+          <label
+            htmlFor="imageUpload"
+            className="cursor-pointer bg-blue-500 text-white font-bold rounded-sm py-1 px-4"
+          >
+            {selectedFileName ? "Change image" : "Select an image"}
+          </label>
         </div>
         <div className="flex flex-col">
           <textarea

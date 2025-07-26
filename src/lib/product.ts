@@ -1,5 +1,6 @@
 import { type IProduct } from "@/types/product";
 import sampleProducts from "@/data/sample-products.json";
+import { generateId } from "@/utils/helpers";
 
 const PRODUCTS_KEY = "products";
 const PRODUCTS_VERSION_KEY = "0bic0deM@n";
@@ -52,6 +53,13 @@ export const getProductById = (id: string): IProduct => {
   return product;
 };
 
+export const addProduct = (product: Partial<IProduct>): void => {
+  if (typeof window === "undefined") return;
+  const products = getProducts();
+  const updated = [...products, product];
+  localStorage.setItem(PRODUCTS_KEY, JSON.stringify(updated));
+};
+
 export const deleteProduct = (id: string): void => {
   if (typeof window === "undefined") return;
 
@@ -63,4 +71,16 @@ export const deleteProduct = (id: string): void => {
   const updated = products.filter((item) => item.productId !== id);
 
   localStorage.setItem(PRODUCTS_KEY, JSON.stringify(updated));
+};
+
+export const transformedUniqueCategories = () => {
+  const products = getProducts();
+
+  const uniqueCategories = Array.from(
+    new Set(products.map((item) => item.category))
+  ).map((name) => ({
+    id: generateId(),
+    name,
+  }));
+  return uniqueCategories;
 };

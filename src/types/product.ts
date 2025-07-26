@@ -9,14 +9,13 @@ export interface IProduct {
   id: string;
   imageUrl: string;
   category: string;
-  brand: string;
   longDescription?: string;
   productThumbnails?: string[];
 }
 
 export interface IProductContextType {
   products: IProduct[];
-  add?: (product: IProduct) => void;
+  onAddNewProduct?: (product: IProduct) => void;
   update?: (product: IProduct) => void;
   remove?: (id: string) => void;
   loading?: boolean;
