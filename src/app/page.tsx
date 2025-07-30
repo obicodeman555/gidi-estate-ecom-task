@@ -13,7 +13,9 @@ export default function Home() {
     <article>
       <Suspense
         fallback={
-          <Loader className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50" />
+          <div className="flex flex-col items-center justify-center h-100 bg-white rounded-[10px]">
+            <Loader />
+          </div>
         }
       >
         <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
