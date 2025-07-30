@@ -11,7 +11,11 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <article>
-      <Suspense fallback={<Loader />}>
+      <Suspense
+        fallback={
+          <Loader className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50" />
+        }
+      >
         <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-4 gap-8 py-10 items-start">
             <section className="productFilter__section col-span-1">

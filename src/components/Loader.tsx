@@ -1,3 +1,3 @@
-export const Loader = () => {
-  return <div className="loader loader-solid"></div>;
+export const Loader = ({ className }: { className?: string }) => {
+  return <div className={`loader loader-solid ${className ?? ""}`}></div>;
 };
