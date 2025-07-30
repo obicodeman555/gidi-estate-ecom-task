@@ -5,7 +5,11 @@ import {
   deleteProduct,
   getProducts as getStoredProducts,
 } from "@/lib/product";
-import type { IProduct, IProductContextType } from "@/types/product";
+import type {
+  ProductFilterOptions,
+  IProduct,
+  IProductContextType,
+} from "@/types/product";
 import { useRouter } from "next/navigation";
 
 import {
@@ -42,6 +46,25 @@ export const ProductProvider = ({ children }: { children: ReactNode }) => {
     });
   }, []);
 
+  const filterProducts = (
+    products: IProduct[],
+    options: ProductFilterOptions
+  ): IProduct[] => {
+    return products.filter((product) => {
+      const matchesCategory = options.category
+        ? product.category.toLowerCase() === options.category
+        : true;
+
+      const matchesMin =
+        options.minPrice != null ? product.price >= options.minPrice : true;
+
+      const matchesMax =
+        options.maxPrice != null ? product.price <= options.maxPrice : true;
+
+      return matchesCategory && matchesMin && matchesMax;
+    });
+  };
+
   useEffect(() => {
     const loadedProducts = getStoredProducts();
     setProducts(loadedProducts);
@@ -49,7 +72,7 @@ export const ProductProvider = ({ children }: { children: ReactNode }) => {
   }, []);
   return (
     <ProductContext.Provider
-      value={{ products, onAddNewProduct, remove, loading }}
+      value={{ products, onAddNewProduct, remove, loading, filterProducts }}
     >
       {children}
     </ProductContext.Provider>

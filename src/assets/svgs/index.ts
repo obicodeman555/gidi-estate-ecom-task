@@ -8,3 +8,4 @@ export * from "./ArrowIcon";
 export * from "./AutoIcon";
 export * from "./CalendarIcon";
 export * from "./StoreIcon";
+export * from "./FilterIcon";

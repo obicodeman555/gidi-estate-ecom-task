@@ -2,7 +2,7 @@
 
 import { CustomDropdown } from "@/components";
 import { useProduct } from "@/context/ProductContext";
-import { transformedUniqueCategories } from "@/lib/product";
+import { extractUniqueCategories } from "@/utils/helpers";
 import { type IProduct } from "@/types/product";
 import { generateId } from "@/utils/helpers";
 import {
@@ -38,11 +38,11 @@ export const ProductForm = ({
     initialProduct || {
       productId: generateId(),
       name: "",
-      price: "",
+      price: 0,
       longDescription: "",
       shortDescription: "",
       imageUrl: "",
-      offPrice: "",
+      offPrice: 0,
       inStock: false,
     }
   );
@@ -53,9 +53,9 @@ export const ProductForm = ({
     name: string;
   } | null>(null);
 
-  const { onAddNewProduct } = useProduct();
+  const { onAddNewProduct, products } = useProduct();
 
-  const customDropdownCatlist = transformedUniqueCategories();
+  const customDropdownCatlist = extractUniqueCategories(products);
 
   const isFormValid = (form: Partial<IProduct>): boolean => {
     return (

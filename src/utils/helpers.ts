@@ -1,3 +1,5 @@
+import { type IProduct } from "@/types/product";
+
 /**
  * Format monetary values
  * @param val
@@ -35,3 +37,13 @@ export const generateId = (): string =>
   `${
     crypto?.randomUUID?.() ?? Math.random().toString(36).slice(2) + Date.now()
   }`;
+
+export const extractUniqueCategories = (products: IProduct[]) => {
+  const uniqueCategories = Array.from(
+    new Set(products.map((item) => item.category))
+  ).map((name) => ({
+    id: generateId(),
+    name,
+  }));
+  return uniqueCategories;
+};

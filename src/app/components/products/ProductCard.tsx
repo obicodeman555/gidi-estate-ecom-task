@@ -29,7 +29,7 @@ const ProductCard = ({ product }: { product: IProduct }) => {
           <span className="text-sm">{truncate(product.shortDescription)}</span>
         </div>
 
-        <div className="flex flex-col productCard__price   mt-auto">
+        <div className="flex flex-col productCard__price mt-auto">
           <span>Price:</span>
           <div className="flex items-center gap-2">
             <span className="text-xl font-black text-nowrap">
@@ -53,7 +53,7 @@ const ProductCard = ({ product }: { product: IProduct }) => {
           onClick={() => router.push(`/products/edit/${product.productId}`)}
         >
           <PenIconFill />
-          <span className="text-xs font-bold  flex items-center justify-center">
+          <span className="text-xs font-bold flex items-center justify-center">
             Edit
           </span>
         </button>

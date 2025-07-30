@@ -10,11 +10,11 @@ export default function Home() {
   return (
     <article>
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-3 gap-4 py-10">
+        <div className="grid grid-cols-4 gap-8 py-10 items-start">
           <section className="productFilter__section col-span-1">
             <ProductFilters />
           </section>
-          <section className="productListing__section col-span-2">
+          <section className="productListing__section col-span-3">
             <ProductGrid />
           </section>
         </div>
