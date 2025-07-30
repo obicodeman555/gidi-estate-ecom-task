@@ -1,4 +1,4 @@
-import { AddIcon, SearchOutline, BellIcon } from "@/assets/svgs";
+import { AddIcon, BellIcon } from "@/assets/svgs";
 import Link from "next/link";
 
 export const Header = () => {
@@ -9,18 +9,6 @@ export const Header = () => {
           <Link href="/" className="text-2xl font-black">
             GIDI
           </Link>
-          <div className="flex flex-col relative searchInput__block">
-            <input
-              type="text"
-              placeholder="Search by products, brands & categories"
-              className="bg-transparent"
-              name="productSearch"
-              id="searchInput"
-            />
-            <span className="absolute flex items-center justify-center searchInput__icon">
-              <SearchOutline />
-            </span>
-          </div>
           <div className="flex items-center gap-8">
             <Link
               href={"/products/add"}

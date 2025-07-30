@@ -10,7 +10,7 @@ const EditForm = () => {
   return (
     <div className="max-w-2xl mx-auto">
       <div className="flex flex-col gap-2 py-16">
-        <h1 className="text-3xl font-black">Edit Product</h1>
+        <h1 className="text-3xl font-black text-center">Edit Product</h1>
         <ProductForm initialProduct={currentProduct} isEdit={true} />
       </div>
     </div>

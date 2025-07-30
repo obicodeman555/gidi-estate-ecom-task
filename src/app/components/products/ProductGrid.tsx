@@ -4,6 +4,7 @@ import ProductCard from "./ProductCard";
 import { useProduct } from "@/context/ProductContext";
 import { useMemo } from "react";
 import { PackageSearch } from "@/assets/svgs";
+import { Loader } from "@/components";
 
 export const ProductGrid = () => {
   const { products, loading } = useProduct();
@@ -34,14 +35,18 @@ export const ProductGrid = () => {
   }, [products, category, minPrice, maxPrice]);
 
   if (loading) {
-    return <div>Loading products</div>;
+    return (
+      <div className="flex flex-col items-center justify-center h-100 bg-white rounded-[10px]">
+        <Loader />
+      </div>
+    );
   }
 
   if (filteredProducts.length === 0 || products.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center gap-4 h-100 bg-white rounded-[10px]">
         <PackageSearch width={80} height={80} color="grey" />
-        <h1 className="text-lg font-bold">
+        <h1 className="font-bold">
           We couldn&apos;t find what you&apos;re looking for.
         </h1>
         <p className="text-blue-700">

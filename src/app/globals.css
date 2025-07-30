@@ -2,6 +2,7 @@
 @import "../styles/search-input.css";
 @import "../styles/header.css";
 @import "../styles/product.css";
+@import "../styles/loader.css";
 
 :root {
   --background: #f3f3f3;

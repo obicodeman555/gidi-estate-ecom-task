@@ -20,8 +20,8 @@ const ProductCard = ({ product }: { product: IProduct }) => {
           <Image
             src={product.imageUrl}
             alt={product.name}
-            width={200}
-            height={200}
+            width={100}
+            height={100}
           />
         </div>
         <div className="productCard__text flex flex-col mt-5 gap-1">
