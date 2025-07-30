@@ -46,8 +46,6 @@ export const ProductFilters = () => {
     router.push(`?${params.toString()}`);
   };
 
-  console.log({ selectedCategory, price });
-
   const handleOpenAccordion = useCallback(
     (e: MouseEvent<HTMLButtonElement>) => {
       e.stopPropagation();

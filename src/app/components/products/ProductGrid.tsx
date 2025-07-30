@@ -36,6 +36,14 @@ export const ProductGrid = () => {
     return <div>Loading products</div>;
   }
 
+  if (filteredProducts.length === 0 || products.length === 0) {
+    return (
+      <div className="border border-solid h-full">
+        <h1>We couldn&apos;t find what you&apos;re looking for.</h1>
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-col gap-6">
       <div className="flex">
