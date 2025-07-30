@@ -3,6 +3,7 @@ import { useSearchParams } from "next/navigation";
 import ProductCard from "./ProductCard";
 import { useProduct } from "@/context/ProductContext";
 import { useMemo } from "react";
+import { PackageSearch } from "@/assets/svgs";
 
 export const ProductGrid = () => {
   const { products, loading } = useProduct();
@@ -38,8 +39,15 @@ export const ProductGrid = () => {
 
   if (filteredProducts.length === 0 || products.length === 0) {
     return (
-      <div className="border border-solid h-full">
-        <h1>We couldn&apos;t find what you&apos;re looking for.</h1>
+      <div className="flex flex-col items-center justify-center gap-4 h-100 bg-white rounded-[10px]">
+        <PackageSearch width={80} height={80} color="grey" />
+        <h1 className="text-lg font-bold">
+          We couldn&apos;t find what you&apos;re looking for.
+        </h1>
+        <p className="text-blue-700">
+          Try searching for more general terms or shop from the categories
+          above.
+        </p>
       </div>
     );
   }
