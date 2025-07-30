@@ -58,6 +58,18 @@ export const addProduct = (product: Partial<IProduct>): void => {
   localStorage.setItem(PRODUCTS_KEY, JSON.stringify(updated));
 };
 
+export const updateProduct = (
+  id: string,
+  updatedProduct: Partial<IProduct>
+) => {
+  const products = getProducts();
+
+  const updated = products.map((item) =>
+    item.productId === id ? updatedProduct : item
+  );
+  localStorage.setItem(PRODUCTS_KEY, JSON.stringify(updated));
+};
+
 export const deleteProduct = (id: string): void => {
   if (typeof window === "undefined") return;
 

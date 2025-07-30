@@ -27,6 +27,7 @@ export interface IProduct {
 export interface IProductContextType {
   products: IProduct[];
   onAddNewProduct?: (product: IProduct) => void;
+  onUpdateProduct: (id: string, updatedProduct: IProduct) => void;
   update?: (product: IProduct) => void;
   remove?: (id: string) => void;
   loading?: boolean;

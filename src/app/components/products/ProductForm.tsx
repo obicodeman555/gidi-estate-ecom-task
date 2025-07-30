@@ -53,7 +53,7 @@ export const ProductForm = ({
     name: string;
   } | null>(null);
 
-  const { onAddNewProduct, products } = useProduct();
+  const { onAddNewProduct, onUpdateProduct, products } = useProduct();
 
   const customDropdownCatlist = extractUniqueCategories(products);
 
@@ -142,8 +142,11 @@ export const ProductForm = ({
         .replace(/\s+/g, "-"),
     };
 
-    if (initialProduct) return;
-    else onAddNewProduct?.(payload);
+    if (initialProduct) {
+      onUpdateProduct?.(initialProduct.productId, payload);
+    } else {
+      onAddNewProduct?.(payload);
+    }
   };
 
   return (

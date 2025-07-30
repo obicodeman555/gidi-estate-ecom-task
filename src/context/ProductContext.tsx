@@ -4,6 +4,7 @@ import {
   addProduct,
   deleteProduct,
   getProducts as getStoredProducts,
+  updateProduct,
 } from "@/lib/product";
 import type {
   ProductFilterOptions,
@@ -46,6 +47,17 @@ export const ProductProvider = ({ children }: { children: ReactNode }) => {
     });
   }, []);
 
+  const onUpdateProduct = useCallback(
+    (id: string, updatedProduct: IProduct) => {
+      setProducts((prev) =>
+        prev.map((item) => (item.productId === id ? updatedProduct : item))
+      );
+      updateProduct(id, updatedProduct);
+      router.push("/");
+    },
+    [router]
+  );
+
   const filterProducts = (
     products: IProduct[],
     options: ProductFilterOptions
@@ -72,7 +84,14 @@ export const ProductProvider = ({ children }: { children: ReactNode }) => {
   }, []);
   return (
     <ProductContext.Provider
-      value={{ products, onAddNewProduct, remove, loading, filterProducts }}
+      value={{
+        products,
+        onAddNewProduct,
+        onUpdateProduct,
+        remove,
+        loading,
+        filterProducts,
+      }}
     >
       {children}
     </ProductContext.Provider>
